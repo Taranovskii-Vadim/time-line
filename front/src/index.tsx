@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 
+import "./less/style.less";
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
