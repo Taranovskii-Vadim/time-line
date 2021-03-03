@@ -36,25 +36,26 @@ const ToolBar: React.FC = (): JSX.Element => {
     <div>
       <div className='controlLine'>
         <div className='controlLine__shortBlock'>
-          <Select
-            mode='multiple'
-            tagRender={tagRender}
-            placeholder='Укажите навыки'
-            showArrow
-            maxTagCount='responsive'
-            style={{ width: "100%" }}
-            options={options}
-          />
+          <Select placeholder='Укажите сотрудников' style={{ width: "100%" }}>
+            <Select.OptGroup label='Разработчик'>
+              <Select.Option value='1'>Петр Первый</Select.Option>
+              <Select.Option value='2'>Наполеон Бонапарт</Select.Option>
+            </Select.OptGroup>
+            <Select.OptGroup label='Менеджер'>
+              <Select.Option value='3'>Адольф Гитлер</Select.Option>
+            </Select.OptGroup>
+          </Select>
         </div>
-        <Select placeholder='Укажите сотрудников' style={{ width: "25%" }}>
-          <Select.OptGroup label='Разработчик'>
-            <Select.Option value='1'>Петр Первый</Select.Option>
-            <Select.Option value='2'>Наполеон Бонапарт</Select.Option>
-          </Select.OptGroup>
-          <Select.OptGroup label='Менеджер'>
-            <Select.Option value='3'>Адольф Гитлер</Select.Option>
-          </Select.OptGroup>
-        </Select>
+        <Select
+          mode='multiple'
+          tagRender={tagRender}
+          placeholder='Укажите навыки'
+          showArrow
+          maxTagCount='responsive'
+          style={{ width: "50%" }}
+          options={options}
+        />
+
         <CurrentDate validDate={validDate} />
       </div>
       <div className='controlLine'>

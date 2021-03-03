@@ -1,0 +1,40 @@
+.line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid @--color-5;
+  background: rgba(195, 195, 195, 0.2);
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.avatarBlock {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  width: @leftSideSize;
+  min-width: @leftSideSize;
+  max-width: @leftSideSize;
+  border-right: 1px solid @--color-5;
+  &__name {
+    font-size: 15px;
+    line-height: normal;
+    font-weight: 300;
+  }
+  &__subname {
+    color: #4f5f69;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.65px;
+  }
+  &__textEllipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.line.hide {
+  display: none;
+}

@@ -17,7 +17,6 @@ export const formatDate = (
       locale: ru,
     });
   }
-  // eslint-disable-next-line no-console
   console.warn(`${date} не является типом Date `);
   return "N/A";
 };
