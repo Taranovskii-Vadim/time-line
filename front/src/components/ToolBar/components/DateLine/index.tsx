@@ -4,11 +4,11 @@ import { isToday } from "date-fns";
 
 import { useDateMap } from "../../../../hooks";
 import { formatDate } from "../../../../utils";
-import { DateType } from "../../../../types";
+import { TDateType } from "../../../../types";
 
 interface IProps {
   activeDate: Date;
-  type: DateType;
+  type: TDateType;
 }
 
 const DateLine: React.FC<IProps> = ({ activeDate, type }): JSX.Element => {

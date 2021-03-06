@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { addMonths, addYears, addDays, addWeeks } from "date-fns/esm";
 import { startOfYear, getDaysInMonth, startOfMonth } from "date-fns";
 
-import { DateType, DaysInMonth } from "../types";
+import { TDateType, DaysInMonth } from "../types";
 
-export const useDateMap = (activeDate: Date, type: DateType) => {
+export const useDateMap = (activeDate: Date, type: TDateType) => {
   const [dates, setMonths] = useState<DaysInMonth[]>([]);
 
   useEffect(() => {

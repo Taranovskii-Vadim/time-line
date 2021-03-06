@@ -1,6 +1,6 @@
 import { MONTH_NAMES_RU } from "./constants";
 
-export type DateType = "month" | "year";
+export type TDateType = "month" | "year";
 
 export interface DaysInMonth {
   key: number;

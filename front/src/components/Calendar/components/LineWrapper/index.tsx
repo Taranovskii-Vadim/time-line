@@ -1,12 +1,26 @@
 import React, { useState } from "react";
+
 import Line from "../Line";
 
-const LineWrapper: React.FC = (): JSX.Element => {
+import { IUser } from "../../../../store/models/users/types";
+import { TDateType } from "../../../../types";
+
+interface IProps {
+  validDate: Date;
+  dateType: TDateType;
+  user: IUser;
+}
+
+const LineWrapper: React.FC<IProps> = ({
+  validDate,
+  dateType,
+  user,
+}): JSX.Element => {
   const [hide, setHide] = useState<boolean>(true);
   return (
     <>
-      <Line />
-      {!hide ? <Line /> : null}
+      <Line user={user} validDate={validDate} dateType={dateType} />
+      {/* {!hide ? <Line validDate={validDate} dateType={dateType} /> : null} */}
     </>
   );
 };

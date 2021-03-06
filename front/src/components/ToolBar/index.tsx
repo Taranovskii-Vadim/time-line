@@ -5,11 +5,15 @@ import { CaretLeftOutlined, CaretRightOutlined } from "@ant-design/icons";
 import DateLine from "./components/DateLine";
 import CurrentDate from "./components/CurrentDate";
 
-import { DateType } from "../../types";
+import { TDateType } from "../../types";
 
-const ToolBar: React.FC = (): JSX.Element => {
+interface IProps {
+  dateType: TDateType;
+}
+
+const ToolBar: React.FC<IProps> = ({ dateType }): JSX.Element => {
+  // TODO: перенсти в store
   const validDate = new Date();
-  const initialType: DateType = "month";
 
   const options = [
     { value: "blue", label: "React" },
@@ -64,7 +68,7 @@ const ToolBar: React.FC = (): JSX.Element => {
             // onChange={({ target }) => {
             //   onScale({ type: target.value, currentDate });
             // }}
-            value={initialType}
+            value={dateType}
           >
             <Radio.Button value='month'>Месяц</Radio.Button>
             <Radio.Button value='year'>Год</Radio.Button>
@@ -84,7 +88,7 @@ const ToolBar: React.FC = (): JSX.Element => {
             </Button>
           </Button.Group>
         </div>
-        <DateLine activeDate={validDate} type={initialType} />
+        <DateLine activeDate={validDate} type={dateType} />
       </div>
     </div>
   );
