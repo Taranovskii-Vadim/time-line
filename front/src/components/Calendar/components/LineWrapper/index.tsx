@@ -6,21 +6,21 @@ import { IUser } from "../../../../store/models/users/types";
 import { TDateType } from "../../../../types";
 
 interface IProps {
-  validDate: Date;
+  currentDate: Date;
   dateType: TDateType;
   user: IUser;
 }
 
 const LineWrapper: React.FC<IProps> = ({
-  validDate,
+  currentDate,
   dateType,
   user,
 }): JSX.Element => {
   const [hide, setHide] = useState<boolean>(true);
   return (
     <>
-      <Line user={user} validDate={validDate} dateType={dateType} />
-      {/* {!hide ? <Line validDate={validDate} dateType={dateType} /> : null} */}
+      <Line user={user} currentDate={currentDate} dateType={dateType} />
+      {/* {!hide ? <Line currentDate={currentDate} dateType={dateType} /> : null} */}
     </>
   );
 };

@@ -8,12 +8,11 @@ import { selectUsers } from "../../store/models/users/selectors";
 
 interface IProps {
   dateType: TDateType;
+  currentDate: Date;
 }
 
-const Calendar: React.FC<IProps> = ({ dateType }): JSX.Element => {
+const Calendar: React.FC<IProps> = ({ dateType, currentDate }): JSX.Element => {
   const users = useSelector(selectUsers);
-  // TODO: перенсти в store
-  const validDate = new Date();
 
   return (
     <div className='calendar'>
@@ -21,7 +20,7 @@ const Calendar: React.FC<IProps> = ({ dateType }): JSX.Element => {
         <LineWrapper
           key={item.id}
           user={item}
-          validDate={validDate}
+          currentDate={currentDate}
           dateType={dateType}
         />
       ))}

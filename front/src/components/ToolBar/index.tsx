@@ -9,12 +9,19 @@ import { TDateType } from "../../types";
 
 interface IProps {
   dateType: TDateType;
+  currentDate: Date;
+  onScale: React.Dispatch<TDateType>;
+  onPrev: React.Dispatch<void>;
+  onNext: React.Dispatch<void>;
 }
 
-const ToolBar: React.FC<IProps> = ({ dateType }): JSX.Element => {
-  // TODO: перенсти в store
-  const validDate = new Date();
-
+const ToolBar: React.FC<IProps> = ({
+  dateType,
+  currentDate,
+  onScale,
+  onPrev,
+  onNext,
+}): JSX.Element => {
   const options = [
     { value: "blue", label: "React" },
     { value: "red", label: "Angular" },
@@ -60,35 +67,27 @@ const ToolBar: React.FC<IProps> = ({ dateType }): JSX.Element => {
           options={options}
         />
 
-        <CurrentDate validDate={validDate} />
+        <CurrentDate currentDate={currentDate} dateType={dateType} />
       </div>
       <div className='controlLine'>
         <div className='controlLine__shortBlock'>
           <Radio.Group
-            // onChange={({ target }) => {
-            //   onScale({ type: target.value, currentDate });
-            // }}
+            onChange={({ target }) => onScale(target.value)}
             value={dateType}
           >
             <Radio.Button value='month'>Месяц</Radio.Button>
             <Radio.Button value='year'>Год</Radio.Button>
           </Radio.Group>
           <Button.Group>
-            <Button
-              //   onClick={handlePrev}
-              type='ghost'
-            >
+            <Button onClick={() => onPrev()} type='ghost'>
               <CaretLeftOutlined />
             </Button>
-            <Button
-              //   onClick={handleNext}
-              type='ghost'
-            >
+            <Button onClick={() => onNext()} type='ghost'>
               <CaretRightOutlined />
             </Button>
           </Button.Group>
         </div>
-        <DateLine activeDate={validDate} type={dateType} />
+        <DateLine activeDate={currentDate} type={dateType} />
       </div>
     </div>
   );

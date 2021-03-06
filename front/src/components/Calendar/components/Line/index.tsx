@@ -11,13 +11,17 @@ import { TDateType } from "../../../../types";
 import { IUser } from "../../../../store/models/users/types";
 
 interface IProps {
-  validDate: Date;
+  currentDate: Date;
   dateType: TDateType;
   user: IUser;
 }
 
-const Line: React.FC<IProps> = ({ validDate, dateType, user }): JSX.Element => {
-  const dates = useDateMap(validDate, dateType);
+const Line: React.FC<IProps> = ({
+  currentDate,
+  dateType,
+  user,
+}): JSX.Element => {
+  const dates = useDateMap(currentDate, dateType);
 
   return (
     <div className='line'>

@@ -8,6 +8,8 @@
   position: relative;
 }
 
+// TODO: Если будет время сделай норм стили
+
 .wrapper {
   flex: 1;
   height: 32px;
@@ -27,7 +29,14 @@
   &__dayWeek {
     color: @--color-1;
     font-size: 10px;
-    line-height: 1.2;
+    text-align: center;
+    text-transform: capitalize;
+    letter-spacing: 0.54px;
+  }
+
+  &__monthYear {
+    color: @--color-1;
+    font-size: 14px;
     text-align: center;
     text-transform: capitalize;
     letter-spacing: 0.54px;
@@ -38,6 +47,12 @@
   }
 }
 
-.today {
+.currentDate {
   background-color: #d3d3d3;
+}
+
+.yearCell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

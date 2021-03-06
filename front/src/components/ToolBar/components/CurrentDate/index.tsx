@@ -1,21 +1,26 @@
 import React from "react";
 import { capitalize } from "lodash";
 
-import { MonthIndex } from "../../../../types";
+import { MonthIndex, TDateType } from "../../../../types";
 import { ruNominativeMonth } from "../../../../utils";
 
 interface IProps {
-  validDate: Date;
+  currentDate: Date;
+  dateType: TDateType;
 }
 
-const CurrentDate: React.FC<IProps> = ({ validDate }): JSX.Element => (
-  <div className='currentDate'>
-    {
-      <>
-        {capitalize(ruNominativeMonth(validDate.getMonth() as MonthIndex))},{" "}
-        {validDate.getFullYear()}
-      </>
-    }
+const CurrentDate: React.FC<IProps> = ({
+  currentDate,
+  dateType,
+}): JSX.Element => (
+  <div className='date'>
+    {`${
+      dateType === "month"
+        ? `${capitalize(
+            ruNominativeMonth(currentDate.getMonth() as MonthIndex)
+          )},`
+        : ""
+    } ${currentDate.getFullYear()}`}
   </div>
 );
 
