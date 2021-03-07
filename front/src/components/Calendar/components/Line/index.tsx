@@ -26,7 +26,7 @@ const Line: React.FC<IProps> = ({
   return (
     <div className='line'>
       <div className='avatarBlock'>
-        <GithubOutlined className='avatarBlock__icon' />
+        {/* <GithubOutlined className='avatarBlock__icon' /> */}
         <Avatar
           className='avatarBlock__pic'
           size='large'

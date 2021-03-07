@@ -1,5 +1,6 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import _ from "lodash";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, Input, Radio, Select, Tag } from "antd";
 import { CaretLeftOutlined, CaretRightOutlined } from "@ant-design/icons";
 
@@ -7,7 +8,8 @@ import DateLine from "./components/DateLine";
 import CurrentDate from "./components/CurrentDate";
 
 import { TDateType } from "../../types";
-import { searchUsers } from "../../store/models/users/actions";
+import { filterBySkills, searchUsers } from "../../store/models/users/actions";
+import { selectSkills } from "../../store/models/users/selectors";
 
 interface IProps {
   dateType: TDateType;
@@ -17,6 +19,8 @@ interface IProps {
   onNext: React.Dispatch<void>;
 }
 
+const { Option } = Select;
+
 const ToolBar: React.FC<IProps> = ({
   dateType,
   currentDate,
@@ -25,26 +29,9 @@ const ToolBar: React.FC<IProps> = ({
   onNext,
 }): JSX.Element => {
   const dispatch = useDispatch();
-  // const options = [
-  //   { value: "blue", label: "React" },
-  //   { value: "red", label: "Angular" },
-  //   { value: "green", label: "Vue" },
-  //   { value: "lime", label: "NodeJs" },
-  //   { value: "volcano", label: "React Native" },
-  // ];
 
-  const tagRender = ({ label, value, closable, onClose }: any) => {
-    return (
-      <Tag
-        color={value}
-        closable={closable}
-        onClose={onClose}
-        style={{ marginRight: 3 }}
-      >
-        {label}
-      </Tag>
-    );
-  };
+  const skills = useSelector(selectSkills);
+
   // TODO: возможно заменить на multiselect
   return (
     <div>
@@ -57,15 +44,19 @@ const ToolBar: React.FC<IProps> = ({
             placeholder='Введите имя сотрудника'
           />
         </div>
-        {/* <Select
+        <Select
           mode='multiple'
-          tagRender={tagRender}
-          placeholder='Укажите навыки'
-          showArrow
-          maxTagCount='responsive'
+          allowClear
           style={{ width: "50%" }}
-          options={options}
-        /> */}
+          placeholder='Укажите навыки'
+          onChange={(value: string[]) => dispatch(filterBySkills(value))}
+        >
+          {skills.map(skill => (
+            <Option key={skill.value} value={skill.value}>
+              {_.capitalize(skill.value)}
+            </Option>
+          ))}
+        </Select>
 
         <CurrentDate currentDate={currentDate} dateType={dateType} />
       </div>
