@@ -1,3 +1,10 @@
+import { addMonths, addYears } from "date-fns/esm";
+
+export const DATE_INCREMENTOR_MAP = {
+  month: addMonths,
+  year: addYears,
+};
+
 export const MONTH_NAMES_RU = [
   "январь",
   "февраль",

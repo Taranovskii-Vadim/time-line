@@ -31,6 +31,7 @@ const Line: React.FC<IProps> = ({
           className='avatarBlock__pic'
           size='large'
           icon={<UserOutlined />}
+          src={user.avatarUrl}
         />
         <div>
           <div className={cn("avatarBlock__name", "avatarBlock__textEllipsis")}>

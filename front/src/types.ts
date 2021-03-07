@@ -16,7 +16,6 @@ export type VariableIterator = (date: number | Date, amount: number) => Date;
 export interface CalendarStateController {
   state: CalendarState;
   setType: (type: CalendarState["type"]) => void;
-  setDate: (currentDate: CalendarState["currentDate"]) => void;
   offsetDate: (val: number) => void;
 }
 
