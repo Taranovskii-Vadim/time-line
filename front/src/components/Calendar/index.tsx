@@ -1,5 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Empty } from "antd";
+
 import LineWrapper from "./components/LineWrapper";
 
 import { TDateType } from "../../types";
@@ -16,14 +18,18 @@ const Calendar: React.FC<IProps> = ({ dateType, currentDate }): JSX.Element => {
 
   return (
     <div className='calendar'>
-      {users.map(item => (
-        <LineWrapper
-          key={item.id}
-          user={item}
-          currentDate={currentDate}
-          dateType={dateType}
-        />
-      ))}
+      {users.length ? (
+        users.map(item => (
+          <LineWrapper
+            key={item.id}
+            user={item}
+            currentDate={currentDate}
+            dateType={dateType}
+          />
+        ))
+      ) : (
+        <Empty style={{ padding: 15 }} />
+      )}
     </div>
   );
 };
