@@ -8,18 +8,16 @@
   position: relative;
 }
 
-// TODO: Если будет время сделай норм стили
-
 .wrapper {
   flex: 1;
   height: 32px;
   padding-top: 2px;
-  border-right: 1px solid @--color-5;
+  border-right: 1px solid @grey;
   background-color: #f1f1f1;
 
   &__day {
     height: 16px;
-    color: @--color-1;
+    color: @black;
     font-size: 10px;
     line-height: 1.6;
     text-align: center;
@@ -27,7 +25,7 @@
   }
 
   &__dayWeek {
-    color: @--color-1;
+    color: @black;
     font-size: 10px;
     text-align: center;
     text-transform: capitalize;
@@ -35,7 +33,7 @@
   }
 
   &__monthYear {
-    color: @--color-1;
+    color: @black;
     font-size: 14px;
     text-align: center;
     text-transform: capitalize;
@@ -43,7 +41,7 @@
   }
 
   &:first-child {
-    border-left: 1px solid @--color-5;
+    border-left: 1px solid @grey;
   }
 }
 

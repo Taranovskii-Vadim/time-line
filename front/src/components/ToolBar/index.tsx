@@ -1,5 +1,4 @@
 import React from "react";
-import _ from "lodash";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Input, Radio, Select, Tag } from "antd";
 import { CaretLeftOutlined, CaretRightOutlined } from "@ant-design/icons";
@@ -7,6 +6,7 @@ import { CaretLeftOutlined, CaretRightOutlined } from "@ant-design/icons";
 import DateLine from "./components/DateLine";
 import CurrentDate from "./components/CurrentDate";
 
+import { StupidType } from "../../store/types";
 import { TDateType } from "../../types";
 import { filterBySkills, searchUsers } from "../../store/models/users/actions";
 import { selectSkills } from "../../store/models/users/selectors";
@@ -19,8 +19,6 @@ interface IProps {
   onNext: React.Dispatch<void>;
 }
 
-const { Option } = Select;
-
 const ToolBar: React.FC<IProps> = ({
   dateType,
   currentDate,
@@ -32,7 +30,23 @@ const ToolBar: React.FC<IProps> = ({
 
   const skills = useSelector(selectSkills);
 
-  // TODO: возможно заменить на multiselect
+  const tagRender = (props: StupidType): JSX.Element => (
+    <Tag
+      color={props.value}
+      closable={props.closable}
+      onClose={props.onClose}
+      style={{ marginRight: 3 }}
+    >
+      {props.label}
+    </Tag>
+  );
+
+  const handleFilterChange = (v: StupidType, option: StupidType): void => {
+    dispatch(
+      filterBySkills(option.map((item: StupidType) => item.label.toLowerCase()))
+    );
+  };
+
   return (
     <div>
       <div className='controlLine'>
@@ -48,15 +62,11 @@ const ToolBar: React.FC<IProps> = ({
           mode='multiple'
           allowClear
           style={{ width: "50%" }}
+          tagRender={tagRender}
           placeholder='Укажите навыки'
-          onChange={(value: string[]) => dispatch(filterBySkills(value))}
-        >
-          {skills.map(skill => (
-            <Option key={skill.value} value={skill.value}>
-              {_.capitalize(skill.value)}
-            </Option>
-          ))}
-        </Select>
+          options={skills}
+          onChange={handleFilterChange}
+        />
 
         <CurrentDate currentDate={currentDate} dateType={dateType} />
       </div>

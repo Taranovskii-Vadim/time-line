@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Empty } from "antd";
+import { Empty, Spin } from "antd";
 
 import LineWrapper from "./components/LineWrapper";
 
 import { TDateType } from "../../types";
 
-import { selectUsers } from "../../store/models/users/selectors";
+import { selectLoading, selectUsers } from "../../store/models/users/selectors";
 
 interface IProps {
   dateType: TDateType;
@@ -15,6 +15,15 @@ interface IProps {
 
 const Calendar: React.FC<IProps> = ({ dateType, currentDate }): JSX.Element => {
   const users = useSelector(selectUsers);
+  const isLoading = useSelector(selectLoading);
+
+  if (isLoading) {
+    return (
+      <div className='loadingBlock'>
+        <Spin size='default' tip='Загрузка календаря...' />
+      </div>
+    );
+  }
 
   return (
     <div className='calendar'>

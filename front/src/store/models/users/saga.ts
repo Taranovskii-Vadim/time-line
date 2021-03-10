@@ -1,13 +1,15 @@
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, delay, put, takeEvery } from "redux-saga/effects";
 
 import { usersApi } from "../../api/usersApi";
-import { setUsers } from "./actions";
+import { STATUS } from "../../constants";
+import { setStatus, setUsers } from "./actions";
 
 import { ETypes, IUser } from "./types";
 
 function* getUsers() {
   try {
-    // TODO action который меняет статус на pending в ui отображать loader
+    yield put(setStatus(STATUS.pending));
+    yield delay(2000);
     const data: IUser[] = yield call(usersApi.fetchUsers);
     yield put(setUsers(data));
   } catch (e) {

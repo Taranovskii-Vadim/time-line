@@ -2,17 +2,21 @@ import React from "react";
 import cn from "classnames";
 import { capitalize } from "lodash";
 import { Avatar } from "antd";
-import { GithubOutlined, UserOutlined } from "@ant-design/icons";
+import { RightOutlined, UserOutlined } from "@ant-design/icons";
 
 import DateCells from "../DateCells";
 
 import { useDateMap } from "../../../../hooks";
 import { TDateType } from "../../../../types";
 import { IUser } from "../../../../store/models/users/types";
+import TodayLine from "../TodayLine";
 
 interface IProps {
   currentDate: Date;
   dateType: TDateType;
+  hide: boolean;
+  isIconVisible: boolean;
+  setHide: React.Dispatch<React.SetStateAction<boolean>>;
   user: IUser;
 }
 
@@ -20,13 +24,23 @@ const Line: React.FC<IProps> = ({
   currentDate,
   dateType,
   user,
+  hide,
+  isIconVisible,
+  setHide,
 }): JSX.Element => {
   const dates = useDateMap(currentDate, dateType);
 
   return (
     <div className='line'>
       <div className='avatarBlock'>
-        {/* <GithubOutlined className='avatarBlock__icon' /> */}
+        {isIconVisible ? (
+          <RightOutlined
+            className={cn("avatarBlock__icon ", {
+              avatarBlock__activeIcon: !hide,
+            })}
+            onClick={() => setHide(!hide)}
+          />
+        ) : null}
         <Avatar
           className='avatarBlock__pic'
           size='large'
@@ -45,6 +59,7 @@ const Line: React.FC<IProps> = ({
         </div>
       </div>
       <div className='content'>
+        <TodayLine type={dateType} activeDate={currentDate} />
         <DateCells dates={dates} dateType={dateType} />
       </div>
     </div>

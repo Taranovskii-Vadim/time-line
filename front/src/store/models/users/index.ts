@@ -23,7 +23,7 @@ export const usersReducer = produce((draft: Draft<TState>, action: TAction) => {
   } else if (action.type === ETypes.FILTER_BY_SKILLS) {
     if (action.payload.length) {
       draft.data.items = localUsers.filter(item => {
-        const skills = item.skills.map(skill => skill.value);
+        const skills = item.skills.map(skill => skill.label);
         return action.payload.every(skill => skills.includes(skill));
       });
     } else {
@@ -34,5 +34,7 @@ export const usersReducer = produce((draft: Draft<TState>, action: TAction) => {
     localUsers = [...users];
     draft.data.items = users;
     draft.status = STATUS.initial;
+  } else if (action.type === ETypes.SET_STATUS) {
+    draft.status = action.payload;
   }
 }, initialState);

@@ -4,6 +4,7 @@ import Line from "../Line";
 
 import { IUser } from "../../../../store/models/users/types";
 import { TDateType } from "../../../../types";
+import ProjectLine from "../ProjectLine";
 
 interface IProps {
   currentDate: Date;
@@ -19,8 +20,24 @@ const LineWrapper: React.FC<IProps> = ({
   const [hide, setHide] = useState<boolean>(true);
   return (
     <>
-      <Line user={user} currentDate={currentDate} dateType={dateType} />
-      {/* {!hide ? <Line currentDate={currentDate} dateType={dateType} /> : null} */}
+      <Line
+        user={user}
+        hide={hide}
+        isIconVisible={!!user.projects.length}
+        setHide={setHide}
+        currentDate={currentDate}
+        dateType={dateType}
+      />
+      {!hide
+        ? user.projects.map(project => (
+            <ProjectLine
+              key={project.title}
+              project={project}
+              currentDate={currentDate}
+              dateType={dateType}
+            />
+          ))
+        : null}
     </>
   );
 };

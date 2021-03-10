@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 const App: React.FC = (): JSX.Element => {
   const { state, setType, offsetDate } = useCalendarState();
   const dispatch = useDispatch();
-
+  // TODO: добавить русификацию
   useEffect(() => {
     dispatch(fetchUsers());
   }, []);
