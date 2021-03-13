@@ -17,7 +17,7 @@ const LineWrapper: React.FC<IProps> = ({
   dateType,
   user,
 }): JSX.Element => {
-  const [hide, setHide] = useState<boolean>(true);
+  const [hide, setHide] = useState<boolean>(false);
   return (
     <>
       <Line

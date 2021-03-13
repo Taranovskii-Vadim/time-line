@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { addMonths, addDays } from "date-fns/esm";
+import { addMonths, addDays, setMonth, setYear } from "date-fns/esm";
 import { startOfYear, getDaysInMonth, startOfMonth } from "date-fns";
 
 import { DATE_INCREMENTOR_MAP } from "../constants";
@@ -56,6 +56,14 @@ export const useCalendarState = (): CalendarStateController => {
         const currentDate = iterator(state.currentDate, val);
         setState({ ...state, currentDate });
       }
+    },
+    setDateMonth: val => {
+      const currentDate = setMonth(state.currentDate, val);
+      setState({ ...state, currentDate });
+    },
+    setDateYear: val => {
+      const currentDate = setYear(state.currentDate, val);
+      setState({ ...state, currentDate });
     },
   };
 };

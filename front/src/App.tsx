@@ -9,7 +9,13 @@ import { useCalendarState } from "./hooks";
 import { useDispatch } from "react-redux";
 
 const App: React.FC = (): JSX.Element => {
-  const { state, setType, offsetDate } = useCalendarState();
+  const {
+    state,
+    setType,
+    offsetDate,
+    setDateMonth,
+    setDateYear,
+  } = useCalendarState();
   const dispatch = useDispatch();
   // TODO: добавить русификацию
   useEffect(() => {
@@ -24,6 +30,8 @@ const App: React.FC = (): JSX.Element => {
         onScale={type => setType(type)}
         onPrev={() => offsetDate(-1)}
         onNext={() => offsetDate(1)}
+        onSetMonth={setDateMonth}
+        onSetYear={setDateYear}
       />
       <Calendar dateType={state.type} currentDate={state.currentDate} />
     </div>

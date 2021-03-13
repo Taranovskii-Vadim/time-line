@@ -17,6 +17,8 @@ interface IProps {
   onScale: React.Dispatch<TDateType>;
   onPrev: React.Dispatch<void>;
   onNext: React.Dispatch<void>;
+  onSetMonth: (val: number) => void;
+  onSetYear: (val: number) => void;
 }
 
 const ToolBar: React.FC<IProps> = ({
@@ -25,6 +27,8 @@ const ToolBar: React.FC<IProps> = ({
   onScale,
   onPrev,
   onNext,
+  onSetMonth,
+  onSetYear,
 }): JSX.Element => {
   const dispatch = useDispatch();
 
@@ -68,7 +72,12 @@ const ToolBar: React.FC<IProps> = ({
           onChange={handleFilterChange}
         />
 
-        <CurrentDate currentDate={currentDate} dateType={dateType} />
+        <CurrentDate
+          currentDate={currentDate}
+          dateType={dateType}
+          onSetMonth={onSetMonth}
+          onSetYear={onSetYear}
+        />
       </div>
       <div className='controlLine'>
         <div className='controlLine__shortBlock'>

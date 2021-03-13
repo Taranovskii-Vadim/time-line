@@ -17,6 +17,8 @@ export interface CalendarStateController {
   state: CalendarState;
   setType: (type: CalendarState["type"]) => void;
   offsetDate: (val: number) => void;
+  setDateMonth: (val: number) => void;
+  setDateYear: (val: number) => void;
 }
 
 export interface CalendarState {
