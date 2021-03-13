@@ -31,7 +31,7 @@ const LineWrapper: React.FC<IProps> = ({
       {!hide
         ? user.projects.map(project => (
             <ProjectLine
-              key={project.title}
+              key={project.id}
               project={project}
               currentDate={currentDate}
               dateType={dateType}

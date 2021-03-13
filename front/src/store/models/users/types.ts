@@ -14,7 +14,7 @@ export interface ITask {
   readonly id: string;
   from: Date;
   to: Date;
-  taskType: TTypeTask;
+  type: TTypeTask;
 }
 
 export interface IProject {

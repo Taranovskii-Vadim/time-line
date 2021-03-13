@@ -1,108 +1,59 @@
 import express from "express";
+import { v4 as uuidv4 } from "uuid";
+
+import { userModel } from "../models/usersModel";
 
 class UsersController {
   async index(req: express.Request, res: express.Response): Promise<void> {
     try {
-      const response = {
-        result: [
+      const users = await userModel.find();
+      res.status(200).json({
+        result: users,
+        message: "success",
+      });
+    } catch (e) {
+      console.log(e);
+      res.status(500).json({ message: "error" });
+    }
+  }
+  async add(req: express.Request, res: express.Response): Promise<void> {
+    try {
+      const user = new userModel({
+        surname: "гоголь",
+        name: "николай",
+        position: "писатель",
+        employmentType: "драматург",
+        avatarUrl:
+          "https://ds04.infourok.ru/uploads/ex/1252/001163e9-8935a206/hello_html_m5c1e10bc.jpg",
+        skills: [
+          { label: "react", value: "blue" },
+          { label: "nodejs", value: "green" },
+          { label: "typescript", value: "geekblue" },
+        ],
+        projects: [
           {
-            id: "1",
-            surname: "тарановский",
-            name: "вадим",
-            position: "специалист",
-            employmentType: "разработчик",
-            skills: [
-              { label: "react", value: "blue" },
-              { label: "nodejs", value: "green" },
-              { label: "typescript", value: "geekblue" },
-            ],
-            avatarUrl:
-              "https://gorets-media.ru/uploads/images/Hronogor/September/.thumbs/d1850c953d306532caaf5b0dee5a0c19_900_682_1.jpg",
-            projects: [
+            id: uuidv4(),
+            title: "мертвые души: первый том",
+            period: {
+              from: new Date(Date.now() + 1000 * 60 * 60 * 24 * 10),
+              to: new Date(Date.now() + 10000 * 70 * 80 * 123 * 10),
+            },
+            tasks: [
               {
-                title: "Личный кабинет работника",
-                tasks: [
-                  {
-                    taskType: "task",
-                    from: new Date(Date.now() + 1000 * 60 * 60 * 24 * 10),
-                    to: new Date(Date.now() + 1000 * 60 * 120 * 24 * 10),
-                  },
-                  {
-                    taskType: "bug",
-                    from: new Date(),
-                    to: new Date(Date.now() + 100 * 60 * 60 * 24 * 10),
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            id: "2",
-            surname: "потапов",
-            name: "михаил",
-            position: "младший специалист",
-            employmentType: "дизайнер",
-            skills: [{ label: "react", value: "blue" }],
-            projects: [
-              {
-                title: "Опросы",
-                tasks: [
-                  {
-                    taskType: "story",
-                    from: new Date(),
-                    to: new Date(Date.now() + 1000 * 60 * 60 * 18 * 14),
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            id: "3",
-            surname: "миронов",
-            name: "михаил",
-            position: "старший специалист",
-            employmentType: "разработчик",
-            skills: [{ label: "angular", value: "red" }],
-            projects: [
-              {
-                title: "Мой голос",
-                tasks: [
-                  {
-                    taskType: "feature",
-                    from: new Date(),
-                    to: new Date(Date.now() + 100 * 60 * 60 * 24 * 10),
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            id: "4",
-            surname: "тестов",
-            name: "тест",
-            position: "старший тест",
-            employmentType: "разработчик",
-            skills: [{ label: "typescript", value: "geekblue" }],
-            projects: [
-              {
-                title: "Мой test",
-                tasks: [
-                  {
-                    taskType: "task",
-                    from: new Date(Date.now() + 100 * 60 * 60 * 24 * 10),
-                    to: new Date(Date.now() + 200 * 60 * 60 * 24 * 10),
-                  },
-                ],
+                id: uuidv4(),
+                type: "task",
+                title: "написать первую главу",
+                from: new Date(Date.now() + 1000 * 60 * 60 * 24 * 10),
+                to: new Date(Date.now() + 10000 * 60 * 60 * 24 * 10),
               },
             ],
           },
         ],
-        message: "success",
-      };
-
-      res.status(200).json(response);
+      });
+      // await user.save();
+      res.status(201).json({ result: user, message: "success" });
     } catch (e) {
-      res.status(500).json({ message: "error" });
+      console.log(e);
     }
   }
 }

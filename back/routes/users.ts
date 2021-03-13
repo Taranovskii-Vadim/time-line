@@ -6,4 +6,6 @@ const router = Router();
 
 router.get("/", usersController.index);
 
+router.post("/", usersController.add);
+
 export { router as usersRouter };

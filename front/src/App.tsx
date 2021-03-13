@@ -8,6 +8,8 @@ import { fetchUsers } from "./store/models/users/actions";
 import { useCalendarState } from "./hooks";
 import { useDispatch } from "react-redux";
 
+// TODO: пересмотреть архитектуру каталогов
+
 const App: React.FC = (): JSX.Element => {
   const {
     state,

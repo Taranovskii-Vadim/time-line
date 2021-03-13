@@ -24,7 +24,7 @@ const Calendar: React.FC<IProps> = ({ dateType, currentDate }): JSX.Element => {
       </div>
     );
   }
-
+  // TODO: поменять _id на id на беке
   return (
     <div className='calendar'>
       {users.length ? (

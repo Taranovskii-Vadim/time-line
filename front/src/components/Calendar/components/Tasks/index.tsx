@@ -21,7 +21,7 @@ const Tasks: React.FC<IProps> = ({
       <TimeLine
         activeDate={currentDate}
         type={dateType}
-        typeTask={task.taskType}
+        typeTask={task.type}
         from={new Date(task.from)}
         to={new Date(task.to)}
       />

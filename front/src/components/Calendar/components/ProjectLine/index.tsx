@@ -13,7 +13,7 @@ interface IProps {
   dateType: TDateType;
   project: IProject;
 }
-
+// TODO: поридумать что-то более изящное с props Tasks
 const ProjectLine: React.FC<IProps> = ({
   currentDate,
   dateType,
@@ -26,7 +26,12 @@ const ProjectLine: React.FC<IProps> = ({
       <div className='content'>
         <TodayLine type={dateType} activeDate={currentDate} />
         {project.tasks.map(task => (
-          <Tasks task={task} dateType={dateType} currentDate={currentDate} />
+          <Tasks
+            key={task.id}
+            task={task}
+            dateType={dateType}
+            currentDate={currentDate}
+          />
         ))}
         <DateCells dates={dates} dateType={dateType} />
       </div>

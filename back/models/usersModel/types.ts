@@ -1,6 +1,23 @@
+export type TTypeTask = "task" | "bug" | "feature" | "story";
+
 export interface ISkill {
+  label: string;
   value: string;
-  color: string;
+}
+
+export interface ITask {
+  readonly id: string;
+  from: Date;
+  to: Date;
+  title: string;
+  type: TTypeTask;
+}
+
+export interface IProject {
+  readonly id: string;
+  title: string;
+  period: { from: Date; to: Date };
+  tasks: ITask[];
 }
 
 export interface IUser {
@@ -11,4 +28,5 @@ export interface IUser {
   employmentType: string;
   skills: ISkill[];
   avatarUrl?: string;
+  projects: IProject[];
 }
