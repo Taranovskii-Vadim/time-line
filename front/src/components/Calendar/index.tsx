@@ -6,16 +6,20 @@ import LineWrapper from "./components/LineWrapper";
 
 import { TDateType } from "../../types";
 
-import { selectLoading, selectUsers } from "../../store/models/users/selectors";
+import { selectUsers } from "../../store/models/users/selectors";
 
 interface IProps {
   dateType: TDateType;
   currentDate: Date;
+  isLoading: boolean;
 }
 
-const Calendar: React.FC<IProps> = ({ dateType, currentDate }): JSX.Element => {
+const Calendar: React.FC<IProps> = ({
+  dateType,
+  currentDate,
+  isLoading,
+}): JSX.Element => {
   const users = useSelector(selectUsers);
-  const isLoading = useSelector(selectLoading);
 
   if (isLoading) {
     return (

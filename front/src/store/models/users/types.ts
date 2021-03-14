@@ -12,14 +12,17 @@ export type TTypeTask = "task" | "bug" | "feature" | "story";
 
 export interface ITask {
   readonly id: string;
+  title: string;
   from: Date;
-  to: Date;
+  hours: number;
   type: TTypeTask;
 }
 
 export interface IProject {
   readonly id: string;
   title: string;
+  color: string;
+  period: { from: Date; to: Date };
   tasks: ITask[];
 }
 

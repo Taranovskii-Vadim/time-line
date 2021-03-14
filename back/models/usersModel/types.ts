@@ -8,7 +8,7 @@ export interface ISkill {
 export interface ITask {
   readonly id: string;
   from: Date;
-  to: Date;
+  hours: number;
   title: string;
   type: TTypeTask;
 }

@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { IUser } from "../models/users/types";
 import { IResponse } from "../types";
 

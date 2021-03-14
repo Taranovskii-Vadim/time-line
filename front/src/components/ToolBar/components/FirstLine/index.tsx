@@ -20,6 +20,7 @@ const { Item } = Form;
 interface IProps {
   currentDate: Date;
   dateType: TDateType;
+  isLoading: boolean;
   onSetMonth: (val: number) => void;
   onSetYear: (val: number) => void;
 }
@@ -27,6 +28,7 @@ interface IProps {
 const FirstLine: React.FC<IProps> = ({
   currentDate,
   dateType,
+  isLoading,
   onSetMonth,
   onSetYear,
 }): JSX.Element => {
@@ -57,6 +59,7 @@ const FirstLine: React.FC<IProps> = ({
           style={{ width: "100%" }}
           onChange={e => dispatch(searchUsers(e.target.value.toLowerCase()))}
           allowClear
+          disabled={isLoading}
           placeholder='Введите имя сотрудника'
         />
       </div>
@@ -67,6 +70,8 @@ const FirstLine: React.FC<IProps> = ({
         tagRender={tagRender}
         placeholder='Укажите навыки'
         options={skills}
+        loading={isLoading}
+        disabled={isLoading}
         onChange={handleFilterChange}
       />
 

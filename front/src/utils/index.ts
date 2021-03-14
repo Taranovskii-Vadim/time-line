@@ -212,6 +212,9 @@ export const toDayLine = (activeDate: Date): React.CSSProperties => {
   };
 };
 
+export const getRandomHex = () =>
+  `#${(((1 << 24) * Math.random()) | 0).toString(16)}`;
+
 export const isWeekend = (date: Date, type: TDateType): boolean => {
   if (type === "month") {
     return isSunday(date) || isSaturday(date);

@@ -44,13 +44,68 @@ class UsersController {
                 type: "task",
                 title: "написать первую главу",
                 from: new Date(Date.now() + 1000 * 60 * 60 * 24 * 10),
-                to: new Date(Date.now() + 10000 * 60 * 60 * 24 * 10),
+                hours: 147,
+              },
+              {
+                id: uuidv4(),
+                type: "bug",
+                title: "исправить ошибки в первой главе",
+                from: new Date(Date.now() + 2100 * 80 * 80 * 24 * 10),
+                hours: 48,
+              },
+            ],
+          },
+          {
+            id: uuidv4(),
+            title: "мертвые души: второй том",
+            period: {
+              from: new Date(Date.now() + 1000 * 60 * 60 * 24 * 10),
+              to: new Date(Date.now() + 10000 * 70 * 80 * 123 * 10),
+            },
+            tasks: [
+              {
+                id: uuidv4(),
+                type: "story",
+                title: "написать первую главу",
+                from: new Date(Date.now() + 1000 * 60 * 60 * 24 * 10),
+                hours: 147,
+              },
+              {
+                id: uuidv4(),
+                type: "bug",
+                title: "исправить ошибки в первой главе",
+                from: new Date(Date.now() + 2100 * 80 * 80 * 24 * 10),
+                hours: 48,
+              },
+            ],
+          },
+          {
+            id: uuidv4(),
+            title: "мертвые души: третий том",
+            period: {
+              from: new Date(Date.now() + 1000 * 60 * 60 * 24 * 10),
+              to: new Date(Date.now() + 10000 * 70 * 80 * 123 * 10),
+            },
+            tasks: [
+              {
+                id: uuidv4(),
+                type: "story",
+                title: "написать первую главу",
+                from: new Date(Date.now() + 1000 * 60 * 60 * 24 * 10),
+                hours: 147,
+              },
+              {
+                id: uuidv4(),
+                type: "feature",
+                title: "исправить ошибки в первой главе",
+                from: new Date(Date.now() + 2100 * 80 * 80 * 24 * 10),
+                hours: 48,
               },
             ],
           },
         ],
       });
-      // await user.save();
+      await user.save();
       res.status(201).json({ result: user, message: "success" });
     } catch (e) {
       console.log(e);
