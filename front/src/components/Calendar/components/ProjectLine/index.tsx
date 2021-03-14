@@ -1,4 +1,5 @@
 import React from "react";
+import { capitalize } from "lodash";
 
 import DateCells from "../DateCells";
 import Tasks from "../Tasks";
@@ -22,7 +23,7 @@ const ProjectLine: React.FC<IProps> = ({
   const dates = useDateMap(currentDate, dateType);
   return (
     <div className='line'>
-      <div className='avatarBlock'>{project.title}</div>
+      <div className='avatarBlock'>{capitalize(project.title)}</div>
       <div className='content'>
         <TodayLine type={dateType} activeDate={currentDate} />
         {project.tasks.map(task => (

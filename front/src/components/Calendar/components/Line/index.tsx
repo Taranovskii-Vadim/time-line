@@ -5,11 +5,11 @@ import { Avatar } from "antd";
 import { RightOutlined, UserOutlined } from "@ant-design/icons";
 
 import DateCells from "../DateCells";
+import TodayLine from "../TodayLine";
 
 import { useDateMap } from "../../../../hooks";
 import { TDateType } from "../../../../types";
 import { IUser } from "../../../../store/models/users/types";
-import TodayLine from "../TodayLine";
 
 interface IProps {
   currentDate: Date;
