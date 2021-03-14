@@ -13,7 +13,7 @@ interface IProps {
   dateType: TDateType;
   project: IProject;
 }
-// TODO: поридумать что-то более изящное с props Tasks
+
 const ProjectLine: React.FC<IProps> = ({
   currentDate,
   dateType,

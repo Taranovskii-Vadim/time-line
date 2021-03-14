@@ -19,7 +19,7 @@ const App: React.FC = (): JSX.Element => {
     setDateYear,
   } = useCalendarState();
   const dispatch = useDispatch();
-  // TODO: добавить русификацию
+
   useEffect(() => {
     dispatch(fetchUsers());
   }, []);

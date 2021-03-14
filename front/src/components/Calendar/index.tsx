@@ -24,14 +24,14 @@ const Calendar: React.FC<IProps> = ({ dateType, currentDate }): JSX.Element => {
       </div>
     );
   }
-  // TODO: поменять _id на id на беке
+
   return (
     <div className='calendar'>
       {users.length ? (
-        users.map(item => (
+        users.map(user => (
           <LineWrapper
-            key={item.id}
-            user={item}
+            key={user.id}
+            user={user}
             currentDate={currentDate}
             dateType={dateType}
           />

@@ -28,12 +28,13 @@ const userSchema = new Schema(
   },
   { versionKey: false }
 );
-// TODO: удалить _id
-// userSchema.method("toClient", function () {
-//   const course = this.toObject();
-//   course.id = course._id;
-//   delete course._id;
-//   return course;
-// });
+
+userSchema.set("toJSON", {
+  transform: function (doc, user) {
+    user.id = user._id;
+    delete user._id;
+    return user;
+  },
+});
 
 export const userModel = model("user", userSchema);
