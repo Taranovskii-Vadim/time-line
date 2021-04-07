@@ -32,12 +32,13 @@ const Calendar: React.FC<IProps> = ({
   return (
     <div className='calendar'>
       {users.length ? (
-        users.map(user => (
+        users.map((user, i) => (
           <LineWrapper
             key={user.id}
             user={user}
             currentDate={currentDate}
             dateType={dateType}
+            isLastUser={i === users.length - 1}
           />
         ))
       ) : (

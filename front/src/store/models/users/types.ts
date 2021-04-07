@@ -22,6 +22,9 @@ export interface IProject {
   readonly id: string;
   title: string;
   color: string;
+  description: string;
+  stack: ISkill[];
+  team: any[];
   period: { from: Date; to: Date };
   tasks: ITask[];
 }
@@ -30,6 +33,13 @@ export interface IUser {
   readonly id: string;
   name: string;
   surname: string;
+  middlename: string;
+  city: string;
+  country: string;
+  department: string;
+  phonenumber: string;
+  birthdate: Date;
+  email: string;
   position: string;
   employmentType: string;
   skills: ISkill[];

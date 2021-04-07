@@ -49,7 +49,11 @@ export const TaskTimeLine = React.forwardRef<any, IProps>(
         <div
           ref={ref}
           className={cn("event")}
-          style={{ ...position, backgroundColor: TASK_TYPES[type] }}
+          style={{
+            ...position,
+            backgroundColor: TASK_TYPES[type],
+            borderRight: dateType === "month" ? "1px solid #000000" : "",
+          }}
         />
       </Popover>
     );

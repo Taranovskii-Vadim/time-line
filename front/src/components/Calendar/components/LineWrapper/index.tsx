@@ -10,12 +10,14 @@ interface IProps {
   currentDate: Date;
   dateType: TDateType;
   user: IUser;
+  isLastUser: boolean;
 }
 
 const LineWrapper: React.FC<IProps> = ({
   currentDate,
   dateType,
   user,
+  isLastUser,
 }): JSX.Element => {
   const [hide, setHide] = useState<boolean>(false);
   return (
@@ -29,12 +31,13 @@ const LineWrapper: React.FC<IProps> = ({
         dateType={dateType}
       />
       {!hide
-        ? user.projects.map(project => (
+        ? user.projects.map((project, i, arr) => (
             <ProjectLine
               key={project.id}
               project={project}
               currentDate={currentDate}
               dateType={dateType}
+              isLastChild={i === arr.length - 1 && isLastUser}
             />
           ))
         : null}
