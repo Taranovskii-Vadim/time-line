@@ -16,30 +16,21 @@ interface IProps {
   onSetYear: (val: number) => void;
 }
 
-const ToolBar: React.FC<IProps> = ({
-  dateType,
-  currentDate,
-  isLoading,
-  onScale,
-  onPrev,
-  onNext,
-  onSetMonth,
-  onSetYear,
-}): JSX.Element => (
+const ToolBar: React.FC<IProps> = (props): JSX.Element => (
   <div>
     <FirstLine
-      dateType={dateType}
-      isLoading={isLoading}
-      currentDate={currentDate}
-      onSetMonth={onSetMonth}
-      onSetYear={onSetYear}
+      dateType={props.dateType}
+      isLoading={props.isLoading}
+      currentDate={props.currentDate}
+      onSetMonth={props.onSetMonth}
+      onSetYear={props.onSetYear}
     />
     <SecondLine
-      dateType={dateType}
-      currentDate={currentDate}
-      onScale={onScale}
-      onPrev={onPrev}
-      onNext={onNext}
+      dateType={props.dateType}
+      currentDate={props.currentDate}
+      onScale={props.onScale}
+      onPrev={props.onPrev}
+      onNext={props.onNext}
     />
   </div>
 );

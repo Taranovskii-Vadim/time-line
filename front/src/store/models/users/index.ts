@@ -12,8 +12,6 @@ const initialState: TState = {
   status: STATUS.initial,
 };
 
-// TODO: сделать нормальный поиск
-
 export const usersReducer = produce((draft: Draft<TState>, action: TAction) => {
   if (action.type === ETypes.SEARCH_USERS) {
     draft.data.items = localUsers.filter(item => {

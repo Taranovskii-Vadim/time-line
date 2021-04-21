@@ -10,6 +10,14 @@ const userSchema = new Schema(
       required: true,
       type: String,
     },
+    middlename: String,
+    city: String,
+    country: String,
+    department: String,
+    phonenumber: String,
+    birthdate: Date,
+    email: String,
+    avatarUrl: String,
     position: {
       required: true,
       type: String,
@@ -18,7 +26,6 @@ const userSchema = new Schema(
       required: true,
       type: String,
     },
-    avatarUrl: String,
     skills: {
       type: Object,
     },

@@ -52,7 +52,7 @@ export const TaskTimeLine = React.forwardRef<any, IProps>(
           style={{
             ...position,
             backgroundColor: TASK_TYPES[type],
-            borderRight: dateType === "month" ? "1px solid #000000" : "",
+            borderRight: dateType === "month" ? "1px solid #696e63" : "",
           }}
         />
       </Popover>
